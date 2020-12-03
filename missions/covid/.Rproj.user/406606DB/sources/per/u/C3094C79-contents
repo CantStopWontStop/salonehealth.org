@@ -1,0 +1,78 @@
+
+
+# load packages
+library(tidyverse)
+library(magrittr)
+library(ggplot2)
+library(plotly)
+library(shiny)
+library(shinythemes)
+library(shinydashboard)
+library(lubridate)
+# get covid data
+WHO_COVID_19_global_data <- read_csv("https://covid19.who.int/WHO-COVID-19-global-data.csv") 
+
+# select Salone data
+salone <- WHO_COVID_19_global_data %>%
+  filter(Country == 'Sierra Leone') %>%
+  filter(Date_reported > ymd(20200331))
+
+
+# plot Salone epicurve
+saloneNewCases <- ggplot(data = salone) + 
+  geom_col(mapping = aes(Date_reported, New_cases),fill="#262626") +
+  scale_x_date(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0,0)) +
+  labs( x = "Date", y = "New Cases",
+        title ="New COVID-19 Cases in Sierra Leone",
+        caption = "Last Refreshed"
+  ) +
+  theme_minimal()
+
+ggplotly(saloneNewCases)
+
+saloneNewDeaths <- ggplot(data = salone) + 
+  geom_col(mapping = aes(Date_reported, New_deaths),fill="#262626") +
+  scale_x_date(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0,0)) +
+  labs( x = "Date", y = "New Deaths",
+        title ="New COVID-19 Deaths in Sierra Leone",
+        caption = "Last Refreshed"
+  ) +
+  
+  theme_bw()
+
+ggplotly(saloneNewDeaths)
+
+
+# define UI
+
+ui <- ui <- dashboardPage(
+  dashboardHeader(title = "Salone Against COVID"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+      menuItem("News", tabName = "newspaper", icon = icon("newspaper-o")), 
+      menuItem("FAQs", tabName = "question", icon = icon("question-circle-o")), 
+      menuItem("Resources", tabName = "calendar", icon = icon("calendar"))
+    )
+  ),
+  dashboardBody(
+    fluidRow(
+      box(plotOutput("salonePlot", height = 250))
+    )
+  )
+)
+
+# Define server function  
+server <- function(input, output) {
+  
+  output$txtout <- renderText({
+    paste( input$txt1, input$txt2, sep = " " )
+  })
+} # server
+
+
+# Create Shiny object
+shinyApp(ui = ui, server = server)
+

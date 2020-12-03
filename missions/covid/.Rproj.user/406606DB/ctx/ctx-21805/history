@@ -1,0 +1,512 @@
+y <- "world!"
+paste(x, y, sep=" ")
+z <- 4
+z + x
+v[3]
+v <- c('red', 'green', 'blue', 'orange')
+v[3]
+mydates <- as.Date(c("2017-08-23", "2017-11-01"))
+days <- mydates[2] - mydates[1]
+days
+m <- matrix(c(17,47,9,36), ncol=2)
+m
+m[2,1] # second row, first column
+m[,1] # first column
+m[2,] # second row
+df <- as.data.frame(m)
+df
+row <- c("red", "green")
+df[2:3,]
+df[2:3,]
+rn(list=ls())
+rm(list=ls())
+cname=file.path("/Users/soried/Downloads/R workshop")
+dir(cname)
+install.packages("tm")
+library(tm)
+docs =Coprus(DirSource(cname))
+docs =Coprus(DirSource(cname))
+docs =Corpus(DirSource(cname))
+summary(docs)
+writeLines(as.character(docs[[1]]))
+writeLines(as.character(docs[[1]]))
+writeLines(as.character(docs[[1]]))
+rm(list = ls())
+cname = file.path("/Users/soried/Downloads/R workshop/articles")
+dir(cname)
+library(tm)
+docs = Corpus(DirSource(cname))
+summary(docs)
+writeLines(as.character(docs[[1]]))
+docs <-tm_map(docs,content_transformer(tolower))
+docs <- tm_map(docs, removePunctuation)
+docs <- tm_map(docs, removeNumbers)
+writeLines(as.character(docs[[1]]))
+dtm = DocumentTermMatrix(docs)
+dtm
+findFreqTerms(dtm, 100)
+findFreqTerms(dtm, 1000)
+freq <- colSums(as.matrix(dtm))
+length(freq)
+ord_freq <- order(freq,decreasing=TRUE)
+freq[ord_freq[1:40]]
+ord_freq
+freq[ord_freq[1:40]]
+# plot Zipf's law
+# sort frequency matrix
+v <- sort(freq, decreasing=TRUE)
+# create dataframe with columns for words and frequencies
+d <- data.frame(word = names(v),frequency=v)
+# assign ranks to each word
+zipf <- cbind(d, Rank=1:nrow(d))
+# visualize Zipf's law
+plot(zipf$Rank, zipf$freq, xlab="Rank", ylab="Frequency",log="x")
+length(freq[which(freq==1)])
+findAssocs(dtm, "black", 0.4)
+findAssocs(dtm, "district", 0.6)
+dtm_matrix = as.matrix(dtm)
+dtm_df = as.data.frame(dtm_matrix)
+install.packages("ggplot2")
+library(ggplot2)
+ggplot(data=dtm_df, mapping=aes(x=dtm_df[, "black"],y=dtm_df[, "district"])) +
+xlab("Frequency of 'black'") +
+ylab("Frequency of 'district'") +
+geom_point()
+metadata <- read.table(file = "~/Desktop/R\ workshop/sc_article_dates.csv", sep = "\t", header = TRUE, quote = "\n", stringsAsFactors = F)
+metadata
+metadata <- read.table(file = "/Users/soried/Downloads/R workshop/sc_article_dates.csv", sep = "\t", header = TRUE, quote = "\n", stringsAsFactors = F)
+metadata
+keyword = "women"
+keyword_freq <- data.frame(rownames(dtm_df), dtm_df[keyword])
+colnames(keyword_freq) <- c("document", "keyword_freq")
+keyword_freq[1:5,]
+date_metadata <- data.frame(metadata[[1]], as.Date(metadata[[2]]))
+colnames(date_metadata) <- c("document", "date")
+date_metadata[1:5,]
+library(dplyr)
+data = inner_join(date_metadata, keyword_freq)
+data[1:5,]
+ggplot(data, aes(x=date, y=keyword_freq)) +
+ggtitle(label = paste('Word frequency of ', keyword, ' in Southern Changes', sep='"')) +
+xlab('Year') +
+ylab('Frequency') +
+geom_point()
+library(tidytext)
+library(tidytext)
+install.packages(tidytext)
+install.packages("tidytext")
+library(tidytext)
+library(magrittr)
+dtm_td <- tidy(dtm)
+top_docs <- dtm_td %>%
+filter(term == keyword) %>%
+arrange(desc(count))
+head(top_docs)
+write.csv(file = "~/Desktop/top_docs.csv", x  = top_docs)
+docs = Corpus(DirSource("/Users/soried/Downloads/R workshop/sc_article_dates.csv/articles_1980s"))
+docs <-tm_map(docs,content_transformer(tolower))
+docs <- tm_map(docs, removePunctuation)
+docs <- tm_map(docs, removeNumbers)
+docs <- tm_map(docs, removeWords, stopwords("english"))
+dtm = DocumentTermMatrix(docs)
+dtm_remove_sparse <- removeSparseTerms(dtm, 0.9)
+dtm_remove_sparse
+# load topicmodels library
+#install.packages("topicmodels")
+library(topicmodels)
+# create new DTM with stopwords removed
+docs = Corpus(DirSource("/Users/soried/Downloads/R workshop/articles_1980s"))
+docs <-tm_map(docs,content_transformer(tolower))
+docs <- tm_map(docs, removePunctuation)
+docs <- tm_map(docs, removeNumbers)
+docs <- tm_map(docs, removeWords, stopwords("english"))
+dtm = DocumentTermMatrix(docs)
+dtm_remove_sparse <- removeSparseTerms(dtm, 0.9)
+dtm_remove_sparse
+install.packages("topicmodels")
+library(topicmodels)
+controlGibbs = list (burnin = 4000, seed = list(2003,5,63,10001,765),start = 5)
+scGibbs = LDA(dtm_remove_sparse, 20, method="Gibbs")
+scTerms = terms(scGibbs, 10)
+scTerms
+scTopics = topics(scGibbs, 5)
+View(scTerms)
+View(scTerms)
+View(dtm_matrix)
+View(scTopics)
+View(scTerms)
+View(scTopics)
+View(scTerms)
+library(Hmisc)
+install.packages("tidyverse")
+install.packages("ggplot2")
+library(nycflights13)
+nycflights13::flights
+filter(flights, month == 1, day == 1)
+filter(flights, dest == "ATL")
+filter(flights, month == 1, day == 1)
+dplyr::filter(flights, dest == "ATL")
+dplyr::filter(flights, dest == "ATL") <- ATL
+dplyr::filter(flights, dest == "ATL") -> ATL
+View(ATL)
+filter(flights, month == 1, day == 1) -> birthDay
+dplyr::filter(flights, month == 1, day == 1) -> birthDay
+View(birthDay)
+dplyr::filter(flights, month == 12, day == 18) -> birthDay
+View(birthDay)
+(dplyr::filter(flights, month == 12, day == 18) -> birthDay)
+View(birthDay)
+arriveLate <- (dplyr::filter(flights, arr_delay >= 60))
+arriveLate <- (dplyr::filter(flights, arr_delay >= 60)) arriveLate
+arriveLate <- (dplyr::filter(flights, arr_delay >= 60)) arriveLate
+arriveLate <- (dplyr::filter(flights, arr_delay >= 60)) arriveLate
+arriveLate <- dplyr::filter(flights, arr_delay >= 60) arriveLate
+arriveLate <- dplyr::filter(flights, arr_delay >= 120) arriveLate
+arriveLate <- dplyr::filter(flights, arr_delay >= 120)
+arriveLate
+View(arriveLate)
+hTown <- dplyr::filter(flights, dest == IAH | dest == HOU)
+hTown <- dplyr::filter(flights, dest == IAH | dest == HOU)
+View(hTown)
+hTown <- dplyr::filter(flights, dest == IAH | dest == HOU)
+View(flights)
+hTown <- dplyr::filter(flights, dest == IAH | dest == HOU)
+hTown <- dplyr::filter(flights, dest == "IAH" | dest == "HOU")
+View(hTown)
+USA <- dplyr::filter(flights, carr == "UA" | carr == "AA" | carr == "DL")
+USA <- dplyr::filter(flights, carrier == "UA" | carrier == "AA" | carrier == "DL")
+View(USA)
+backToShool <- dplyr::filter(flights, month %in% c(7, 8, 9))
+backToShool <- dplyr::filter(flights, month >= 7 & month =< 9)
+backToShool <- dplyr::filter(flights, month >= 7 & month <= 9)
+View(backToShool)
+View(backToShool)
+arriveLateDeptOT <- dplyr::filter(arriveLate, dept_delay <= 0)
+arriveLateDepOT <- dplyr::filter(arriveLate, dep_delay <= 0)
+View(arriveLateDepOT)
+earlyBird <- dplyr::filter(flights, dep_time >= 0000, dep_time <= 0600)
+arrange(flights, year, month, day)
+dplyr::arrange(flights, year, month, day)
+View(flights)
+dplyr::arrange(flights, desc(year), month, day)
+View(flights)
+dplyr::arrange(flights, desc(month), day)
+View(flights)
+dplyr::arrange(flights, desc(month))
+View(flights)
+dplyr::arrange(flights, desc(dep_delay)
+latestFlights <- dplyr::arrange(flights, desc(dep_delay)
+latestFlights <- dplyr::arrange(flights, desc(dep_delay))
+View(latestFlights)
+1301 / 60
+fastestFlights <- dplyr::arrange(flights, air_time)
+View(fastestFlights)
+longestFlights <- dplyr::arrange(flights, desc(distance))
+warning()
+warning(longestFlights <- dplyr::arrange(flights, desc(distance))
+)
+View(longestFlights)
+shortestFlights <- dplyr::arrange(flights, distance)
+View(shortestFlights)
+longest <- dplyr::arrange(flights, air_time)
+View(longest)
+byDest <- group_by(flights, dest)
+View(byDest)
+byDest <- dplyr::group_by(flights, dest)
+View(byDest)
+group_by(iris, Species)
+dplyr::group_by(iris, Species)
+bySpecies <- dplyr::group_by(iris, Species)
+View(bySpecies)
+byDest <- dplyr::group_by(flights, dest)
+View(byDest)
+by_day <- group_by(flights, year, month, day)
+by_day <- dplyr::group_by(flights, year, month, day)
+View(by_day)
+summarise(byDest, delay = mean(dep_delay, na.rm = TRUE))
+dplyr::summarise(byDest, delay = mean(dep_delay, na.rm = TRUE))
+meanDepDelay <-  dplyr::summarise(byDest, delay = mean(dep_delay, na.rm = TRUE))
+View(meanDepDelay)
+latestFlightsByDest <- dplyr::arrange(meanDepDelay, desc(delay))
+View(latestFlightsByDest)
+bySpecies <- dplyr::group_by(iris, Species)
+bySpecies <- dplyr::group_by(iris, Species)
+bySpecies <- dplyr::group_by(iris, Species)
+freqDest <- dplyr::count(dest)
+freqDest <- flights %>%
+dplyr::count(dest)
+freqDest <- flights %>%
+dplyr::count(dest)
+freqDest <- flights %>% dplyr::count(dest)
+install.packages("magrittr")
+library(magrittr)
+freqDest <- flights %>% dplyr::count(dest)
+install.packages("tidyverse")
+freqDest <- flights %>% dplyr::count(dest)
+library(tidyverse)
+install.packages("tidyverse")
+library(tidyverse)
+library(readxl)
+PHAP_Data <- read_excel("Downloads/PHAP Data.xlsx")
+View(PHAP_Data)
+newPHAP_Data <- PHAP_Data %>%
+gather("Class", "Number", 2:4)
+View(newPHAP_Data)
+newPHAP_Data <- PHAP_Data %>%
+gather("Class", "Number", 2:4) %>%
+separate(`Strategic Priority`, c("Row Number", Priority))
+newPHAP_Data <- PHAP_Data %>%
+gather("Class", "Number", 2:4) %>%
+separate(`Strategic Priority`, c("Row Number", "Priority"))
+View(newPHAP_Data)
+newPHAP_Data <- PHAP_Data %>%
+gather("Class", "Number", 2:4)
+View(newPHAP_Data)
+library(readxl)
+PHAP_Data_1 <- read_excel("Downloads/PHAP_Data_1.xlsx")
+View(PHAP_Data_1)
+newPHAP_Data <- PHAP_Data_1 %>%
+gather("Class", "Number", 3:5)
+View(newPHAP_Data)
+write_csv(PHAP_Data_1, ""/Users/soried/Desktop/PHAP_Data_1.csv⁩")
+write_csv(PHAP_Data_1, /Users/soried/Desktop/PHAP_Data_1.csv⁩")
+write_csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data_1.csv⁩")
+write_excel_csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data_1.csv⁩")
+write_excel_csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data_2.csv⁩")
+write.csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data_2.csv⁩)
+write.csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data_2.csv"⁩)
+write.csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data.csv"⁩)
+write.csv(PHAP_Data_1, "/Users/soried/Desktop/PHAP_Data.csv"⁩)
+write.csv(PHAP_Data_1,"/Users/soried/Desktop/PHAP_Data.csv"⁩)
+write_csv(PHAP_Data_1,"/Users/soried/Desktop/PHAP_Data.csv"⁩)
+write_csv(PHAP_Data_1,"/Users/soried/Desktop/PHAP_Data_1.csv"⁩)
+write_csv(newPHAP_Data,"/Users/soried/Desktop/PHAP_Data_1.csv"⁩)
+write_excel_csv(newPHAP_Data, "/Users/soried/Desktop/PHAP_Data_2.csv⁩")
+install.packages("xlsReadWrite")
+install.packages("xlsx")
+write.xlsx(newPHAP_Data, "/Users/soried/Desktop/PHAP_Data_2.xlsx"⁩, sheetName = "Sheet1", col.names = TRUE, row.names = FALSE, append = FALSE)
+write.xlsx(newPHAP_Data, "/Users/soried/Desktop/PHAP_Data_2.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = FALSE, append = FALSE)
+library("xlsx", lib.loc="~/Library/R/3.5/library")
+write.xlsx(newPHAP_Data, "/Users/soried/Desktop/PHAP_Data_2.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = FALSE, append = FALSE)
+write_excel_csv(newPHAP_Data, "/Users/soried/Desktop/PHAP_Data_2.csv⁩")
+library(tidyverse)
+install.packages("xlsx")
+write_csv(Countries,"/Users/soried/Desktop/countries.csv"⁩)
+library("xlsx", lib.loc="~/Library/R/3.5/library")
+write_csv(Countries,"/Users/soried/Desktop/countries.csv"⁩)
+library(readr)
+countries <- read_csv("Desktop/countries.csv")
+View(countries)
+countries <- countries %>%
+gather("Countries")
+View(countries)
+base_url <- "https://programminghistorian.org/assets/basic-text-processing-in-r"
+url <- sprintf("%s/sotu_text/236.txt", base_url)
+text <- paste(readLines(url), collapse = "\n")
+words <- tokenize_words(text)
+length(words[[1]])
+words <- tokenize_words(text)
+library(tidyverse)
+library(tokenizers)
+base_url <- "https://programminghistorian.org/assets/basic-text-processing-in-r"
+url <- sprintf("%s/sotu_text/236.txt", base_url)
+text <- paste(readLines(url), collapse = "\n")
+words <- tokenize_words(text)
+length(words[[1]])
+tab <- table(words[[1]])
+tab <- data_frame(word = names(tab), count = as.numeric(tab))
+tab <- arrange(tab, desc(count))
+tab
+wf <- read_csv(sprintf("%s/%s", base_url, "word_frequency.csv"))
+wf
+tab <- inner_join(tab, wf)
+tab
+filter(tab, frequency < 0.1)
+print(filter(tab, frequency < 0.002), n = 15)
+metadata <- read_csv(sprintf("%s/%s", base_url, "metadata.csv"))
+metadata
+tab <- filter(tab, frequency < 0.002)
+result <- c(metadata$president[236], metadata$year[236], tab$word[1:5])
+paste(result, collapse = "; ")
+files <- sprintf("%s/sotu_text/%03d.txt", base_url, 1:236)
+text <- c()
+for (f in files) {
+text <- c(text, paste(readLines(f), collapse = "\n"))
+}
+text
+pwd
+getwd()
+WHO_COVID_19_global_data <- read_csv("https://covid19.who.int/WHO-COVID-19-global-data.csv")
+library(tidyverse)
+library(magrittr)
+library(ggplot2)
+library(shiny)
+library(shinythemes)
+WHO_COVID_19_global_data <- read_csv("https://covid19.who.int/WHO-COVID-19-global-data.csv")
+salone <- WHO_COVID_19_global_data %>%
+filter(Country == 'Sierra Leone')
+salonePlot <- ggplot(data = salone) +
+geom_col(mapping = aes(Date_reported, New_cases))
+ggplot(data = mpg) +
+geom_point(mapping = aes(x = displ, y = hwy, color = class))
+View(salonePlot)
+View(salonePlot)
+View(salonePlot)
+View(salonePlot)
+salonePlot
+# define UI
+ui <- fluidPage(theme = shinytheme("slate") )
+View(ui)
+View(ui)
+# Create Shiny object
+shinyApp(ui = ui, server = server)
+# load packages
+library(tidyverse)
+library(magrittr)
+library(ggplot2)
+library(shiny)
+library(shinythemes)
+# get covid data
+WHO_COVID_19_global_data <- read_csv("https://covid19.who.int/WHO-COVID-19-global-data.csv")
+# select Salone data
+salone <- WHO_COVID_19_global_data %>%
+filter(Country == 'Sierra Leone')
+# plot Salone epicurve
+salonePlot <- ggplot(data = salone) +
+geom_col(mapping = aes(Date_reported, New_cases))
+salonePlot
+# define UI
+ui <- fluidPage(theme = shinytheme("slate"),
+navbarPage(
+"My first app",
+tabPanel("Navbar 1",
+sidebarPanel(
+tags$h3("Input:"),
+textInput("txt1", "Given Name:", ""),
+textInput("txt2", "Surname:", ""),
+), # sidebarPanel
+mainPanel(
+h1("Header 1"),
+h4("Output 1"),
+verbatimTextOutput("txtout"),
+) # mainPanel
+), # Navbar 1, tabPanel
+tabPanel("Navbar 2", "This panel is intentionally left blank"),
+tabPanel("Navbar 3", "This panel is intentionally left blank")
+) # navbarPage
+) # fluidPage
+# Define server function
+server <- function(input, output) {
+output$txtout <- renderText({
+paste( input$txt1, input$txt2, sep = " " )
+})
+} # server
+# Create Shiny object
+shinyApp(ui = ui, server = server)
+runApp('Google Drive/Projects/Salone Health Full/Salone Health/Projects/Salone Against COVID-19/Content Development/Data Visualization/salone.R')
+runApp('Google Drive/Projects/Salone Health Full/Salone Health/Projects/Salone Against COVID-19/Content Development/Data Visualization/salone.R')
+runApp('Google Drive/Projects/Salone Health Full/Salone Health/Projects/Salone Against COVID-19/Content Development/Data Visualization/salone.R')
+runApp('Google Drive/Projects/Salone Health Full/Salone Health/Projects/Salone Against COVID-19/Content Development/Data Visualization/salone.R')
+setwd("~/Google Drive/Projects/Salone Health Full/Salone Health Website/missions")
+getwd()
+getwd()
+setwd("~/Google Drive/Projects/Salone Health Full/Salone Health Website/missions/covid")
+runApp('~/Google Drive/Projects/Salone Health Full/Salone Health/Projects/Salone Against COVID-19/Content Development/Data Visualization/salone.R')
+runApp('saloneCovid.R')
+runApp('saloneCovid.R')
+sidebar <- dashboardSidebar(
+sidebarMenu(
+menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+menuItem("Widgets", icon = icon("th"), tabName = "widgets",
+badgeLabel = "new", badgeColor = "green")
+)
+)
+body <- dashboardBody(
+tabItems(
+tabItem(tabName = "dashboard",
+h2("Dashboard tab content")
+),
+tabItem(tabName = "widgets",
+h2("Widgets tab content")
+)
+)
+)
+# Put them together into a dashboardPage
+dashboardPage(
+dashboardHeader(title = "Simple tabs"),
+sidebar,
+body
+)
+install.packages("shinydashboard")
+library(shinydashboard)
+runApp('saloneCovid.R')
+dashboardPage(
+dashboardHeader(),
+dashboardSidebar(),
+dashboardBody()
+)
+runApp('saloneCovid.R')
+runApp('saloneCovid.R')
+runApp('saloneCovid.R')
+# load packages
+library(tidyverse)
+library(magrittr)
+library(ggplot2)
+library(plotly)
+library(shiny)
+library(shinythemes)
+library(shinydashboard)
+library(lubridate)
+# get covid data
+WHO_COVID_19_global_data <- read_csv("https://covid19.who.int/WHO-COVID-19-global-data.csv")
+# select Salone data
+salone <- WHO_COVID_19_global_data %>%
+filter(Country == 'Sierra Leone') %>%
+filter(Date_reported > ymd(20200331))
+# plot Salone epicurve
+saloneNewCases <- ggplot(data = salone) +
+geom_col(mapping = aes(Date_reported, New_cases),fill="#262626") +
+scale_x_date(expand = c(0,0)) +
+scale_y_continuous(expand = c(0,0)) +
+labs( x = "Date", y = "New Cases",
+title ="New COVID-19 Cases in Sierra Leone",
+caption = "Last Refreshed"
+) +
+theme_minimal()
+ggplotly(saloneNewCases)
+saloneNewDeaths <- ggplot(data = salone) +
+geom_col(mapping = aes(Date_reported, New_deaths),fill="#262626") +
+scale_x_date(expand = c(0,0)) +
+scale_y_continuous(expand = c(0,0)) +
+labs( x = "Date", y = "New Deaths",
+title ="New COVID-19 Deaths in Sierra Leone",
+caption = "Last Refreshed"
+) +
+theme_bw()
+ggplotly(saloneNewDeaths)
+# define UI
+ui <- ui <- dashboardPage(
+dashboardHeader(title = "Salone Against COVID"),
+dashboardSidebar(
+sidebarMenu(
+menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+menuItem("News", tabName = "newspaper", icon = icon("newspaper-o")),
+menuItem("FAQs", tabName = "question", icon = icon("question-circle-o")),
+menuItem("Resources", tabName = "calendar", icon = icon("calendar"))
+)
+),
+dashboardBody(
+fluidRow(
+box(plotOutput("salonePlot", height = 250))
+)
+)
+)
+# Define server function
+server <- function(input, output) {
+output$txtout <- renderText({
+paste( input$txt1, input$txt2, sep = " " )
+})
+} # server
+# Create Shiny object
+shinyApp(ui = ui, server = server)
+install.packages('tidyverse')

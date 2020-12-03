@@ -1,0 +1,287 @@
+
+#mainNav {
+  min-height: 56px;
+  background-color: #fff;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 80%;
+  padding: 0.75rem;
+  color: #992828;
+  border: 1px solid #992828;
+}
+
+#mainNav .navbar-toggler:focus {
+  outline: none;
+}
+
+#mainNav .navbar-brand {
+  color: #242424;
+  font-weight: 700;
+  padding: .9rem 0;
+  font-family: "Saira Semi Condensed";
+  text-transform: uppercase;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white, 80%);
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    background-color: transparent;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+  #mainNav .navbar-brand {
+    padding: .5rem 0;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+  }
+  #mainNav .nav-link {
+    -webkit-transition: none;
+    transition: none;
+    padding: 2rem 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  #mainNav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  #mainNav .nav-link:active {
+    color: white;
+  }
+  #mainNav.navbar-shrink {
+    background-color: #fff;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    color: #000000;
+   
+
+  }
+  #mainNav.navbar-shrink .nav-link {
+    color: #000000;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 0.25rem solid transparent;
+    font-family: "Saira Semi Condensed";
+    
+  }
+  #mainNav.navbar-shrink .nav-link:hover {
+    color: #992828;
+  }
+  #mainNav.navbar-shrink .nav-link:active {
+    color: #467370;
+  }
+  #mainNav.navbar-shrink .nav-link.active {
+    color: #992828;
+    outline: none;
+    border-bottom: 0.25rem solid #992828;
+  }
+}
+
+.bg-image-full {
+  background: no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.bg-image-fulls {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+
+div {
+  box-sizing: border-box;
+  border: 100px;
+  border-color: black;
+}
+footer{
+  background-color: #262626;
+}
+footer a  {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  font-family: 'Nunito';
+  font-weight:300;
+  letter-spacing: 0.0625em;
+}
+h1, h2, h3 {
+  font-weight:300;
+}
+a {
+  color: #992828;
+  text-decoration: underline;
+  font-weight: bold;
+}
+a:hover{
+  color: #242424;
+}
+.img-logo-bg {
+  max-width:
+}
+
+#mainNav {
+  padding: .5rem 0;
+  margin: 0;
+  text-decoration: none;
+}
+.nav-brand {
+  font-weight: 900;
+  text-decoration: none;
+}
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: normal;
+}
+.nav-link:hover {
+  color: #45723f;
+}
+.nav-link:active {
+  color: #45723f;
+}
+
+.btn-primary {
+  background-color: #242424;
+  border-color: #242424;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #992828;
+}
+
+.btn-primary:focus {
+  background-color: #45723f;
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: #45723f !important;
+}
+.progress-bar-gold {
+      background-color: #992828 !important;
+}
+.progress-bar-green {
+      background-color: #45723f !important;
+}
+.progressbar .bg-primary {
+  background-color: #918056;
+}
+#container-fluid {
+  display: flex;
+
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #efefef;
+  border-left: 4px #000000 solid;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+  border-left: 4px #efefef solid;
+}
+
+.row-striped {
+    padding: 15px 0;
+}
+
+.col-center {
+	margin: 0 auto;
+	float: none !important;
+}
+.carousel {
+	margin: 50px auto;
+	padding: 0 70px;
+}
+.carousel .item {
+	color: #262626;
+  text-align: center;
+	overflow: hidden;
+  min-height: 290px;
+  font-weight:300;
+}
+.carousel .item .img-box {
+	width: 168px;
+	height: 168px;
+	margin: 0 auto;
+	padding: 5px;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+}
+.carousel .img-box img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border-radius: 50%;
+}
+.carousel .testimonial {
+	padding: 30px 0 10px;
+}
+.carousel .overview {
+	font-style: italic;
+}
+.carousel .overview b {
+	text-transform: uppercase;
+	color: #262626;
+}
+.carousel .carousel-control {
+	width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    top: 50%;
+	background: none;
+}
+.carousel-control i {
+    font-size: 68px;
+    line-height: 42px;
+    position: absolute;
+    display: inline-block;
+	  color: #918056;
+}
+.carousel .carousel-indicators {
+	bottom: -40px;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 10px;
+	height: 10px;
+	margin: 1px 3px;
+	border-radius: 50%;
+}
+.carousel-indicators li {
+	background: #262626;
+	border-color: transparent;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+.carousel-indicators li.active {
+	background: #918056;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}

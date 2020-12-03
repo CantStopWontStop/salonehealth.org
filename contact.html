@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta property="og:image" content="images/team.jpg" />
+
+  <title>Contact Us | Salone Health</title>
+  <link rel="icon" href="images/logo/salone-health-favicon.png" sizes="16x16" type="image/ico">
+
+  <!-- Bootstrap core CSS -->
+  <link href="resources/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+
+  <!-- Custom styles for this template -->
+  <link href="resources/grayscale-2.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand js-scroll-trigger" href="https://www.salonehealth.org"><img src="images/logo/salone-health-favicon-brand.png" height="20" class="d-inline-block align-center" alt=""> Salone Health</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars" style="color:#992828"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link js-scroll-trigger" href="https://www.salonehealth.org">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="all-missions">Missions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="members">Our Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="updates">Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header id="mastContact" class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+    </div>
+  </header>
+
+  <!-- About Section -->
+  
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section bg-light">
+    <div style="margin: 4rem 0rem"><h1 class="font-weight-light" style="text-align:center;" id="overview">Contact Us</h1></div>
+
+    <hr width="64%" style="margin-bottom: 4rem;margin-top: 2rem;">
+    <div class="container" margin="0 2rem;">
+   
+    
+    
+      <iframe
+      id="JotFormIFrame-202328060426042"
+      title="How can we help you"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src="https://form.jotform.com/202328060426042"
+      frameborder="0"
+      style="
+      min-width: 100%;
+      height:539px;
+      border:none;"
+      scrolling="no"
+    >
+    </iframe>
+    <script type="text/javascript">
+      var ifr = document.getElementById("JotFormIFrame-202328060426042");
+      if(window.location.href && window.location.href.indexOf("?") > -1) {
+        var get = window.location.href.substr(window.location.href.indexOf("?") + 1);
+        if(ifr && get.length > 0) {
+          var src = ifr.src;
+          src = src.indexOf("?") > -1 ? src + "&" + get : src  + "?" + get;
+          ifr.src = src;
+        }
+      }
+      window.handleIFrameMessage = function(e) {
+        if (typeof e.data === 'object') { return; }
+        var args = e.data.split(":");
+        if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); } else { iframe = document.getElementById("JotFormIFrame"); }
+        if (!iframe) { return; }
+        switch (args[0]) {
+          case "scrollIntoView":
+            iframe.scrollIntoView();
+            break;
+          case "setHeight":
+            iframe.style.height = args[1] + "px";
+            break;
+          case "collapseErrorPage":
+            if (iframe.clientHeight > window.innerHeight) {
+              iframe.style.height = window.innerHeight + "px";
+            }
+            break;
+          case "reloadPage":
+            window.location.reload();
+            break;
+          case "loadScript":
+            var src = args[1];
+            if (args.length > 3) {
+                src = args[1] + ':' + args[2];
+            }
+            var script = document.createElement('script');
+            script.src = src;
+            script.type = 'text/javascript';
+            document.body.appendChild(script);
+            break;
+          case "exitFullscreen":
+            if      (window.document.exitFullscreen)        window.document.exitFullscreen();
+            else if (window.document.mozCancelFullScreen)   window.document.mozCancelFullScreen();
+            else if (window.document.mozCancelFullscreen)   window.document.mozCancelFullScreen();
+            else if (window.document.webkitExitFullscreen)  window.document.webkitExitFullscreen();
+            else if (window.document.msExitFullscreen)      window.document.msExitFullscreen();
+            break;
+        }
+        var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+        if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+          var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
+          iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+        }
+      };
+      if (window.addEventListener) {
+        window.addEventListener("message", handleIFrameMessage, false);
+      } else if (window.attachEvent) {
+        window.attachEvent("onmessage", handleIFrameMessage);
+      }
+      </script>
+
+    </div>
+  </section>
+
+
+</section>
+
+<!-- Signup Section -->
+<section id="signup" class="signup-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto text-center">
+        <h2 class="text-white mb-5">Stay in Touch!</h2>
+        <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section bg-black">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="card py-4 h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-hotel text-primary mb-2"></i>
+            <h4 class="text-uppercase m-0">Headquarters</h4>
+            <hr class="my-4">
+            <div class="small text-black-50">Atlanta, Georgia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="card py-4 h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-envelope text-primary mb-2"></i>
+            <h4 class="text-uppercase m-0">Email</h4>
+            <hr class="my-4">
+            <div class="small text-black-50">
+              <a id="link" href="mailto:contact@salonehealth.org">contact@salonehealth.org</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="card py-4 h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-mobile-alt text-primary mb-2"></i>
+            <h4 class="text-uppercase m-0">Phone</h4>
+            <hr class="my-4">
+            <div class="small text-black-50">Coming Soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="social d-flex justify-content-center">
+      <a href="https://twitter.com/salonehealth/" class="mx-2">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/IWDAfricaCDC/" class="mx-2">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/salonehealth" class="mx-2">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="footer-copyright text-center py-3" style="color: #fff; font-size: 16px;">©2020 Salone Health
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="resources/vendor/jquery/jquery.min.js"></script>
+  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="resources/form.js"/></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="resources/grayscale.min.js"></script>
+
+</body>
+
+</html>
